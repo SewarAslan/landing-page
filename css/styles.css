@@ -88,6 +88,22 @@ section {
     transition: ease 0.3s all;
 }
 
+.navbar__hidden {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+.section__content {
+    max-height: 500px; /* Adjust based on content size */
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.5s ease;
+    display: block;
+}
+
+.section__content.collapsed {
+    max-height: 0; 
+    padding: 0;
+    display: none;
+}
 /* Header Styles */
 .page__header {
     background: #fff;
@@ -193,21 +209,32 @@ section:nth-of-type(3n + 1) .landing__container::after {
 /* ---- Theme State Rules ---- */
 /* Section Active Styles */
 /* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
-section.your-active-class {
+section.active{
     background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
-section.your-active-class .landing__container::before {
+section.active .landing__container::before {
     opacity: 1;
     animation: rotate 4s linear 0s infinite forwards;
 }
 
-section.your-active-class .landing__container::after {
+section.active .landing__container::after {
     opacity: 1;
     animation: rotate 5s linear 0s infinite forwards reverse;
 }
 
+#scrollTop {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    font-size: 1em;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#scrollTop:hover {
+    background-color: #444;
+}
 /* Section Active Styles Keyframe Animations */
 @keyframes rotate {
 	from {
@@ -220,4 +247,22 @@ section.your-active-class .landing__container::after {
 		           translate(-1em) 
 		           rotate(-360deg);
 	}
+}
+@media screen and (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+    nav {
+        padding: 5px;
+    }
+
+    #scrollTop {
+        bottom: 10px;
+        right: 10px;
+    }
 }
