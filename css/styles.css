@@ -223,7 +223,12 @@ section.active .landing__container::after {
     opacity: 1;
     animation: rotate 5s linear 0s infinite forwards reverse;
 }
-
+.navbar__menu .menu__link.active {
+    text-decoration: underline;    
+    text-underline-offset: 4px;
+    font-weight: bold; 
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 #scrollTop {
     background-color: #000;
     color: #fff;
